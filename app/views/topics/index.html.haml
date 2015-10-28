@@ -1,2 +1,5 @@
 %h1 Your Bullet Journal
-%p Topics will be here
+%h5= @tomorrow.name
+%h3= @today.name
+- @past_topics.each do |topic|
+  %h3= topic.name

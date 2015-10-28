@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  important: false
+  name: MyString
+  week: MyString
+  day_of_week: MyString
+  year_month: MyString
+  user_id: 1
+
+two:
+  type: 
+  important: false
+  name: MyString
+  week: MyString
+  day_of_week: MyString
+  year_month: MyString
+  user_id: 1
