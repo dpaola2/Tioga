@@ -5,6 +5,16 @@ class Topic < ActiveRecord::Base
 
   after_create :populate_rollup_fields!
 
+  scope :tomorrow, -> {
+    date = Time.zone.now + 1.day
+    where(:created_at => (date.beginning_of_day..date.end_of_day))
+  }
+  scope :today, -> {
+    date = Time.zone.now
+    where(:created_at => (date.beginning_of_day..date.end_of_day))
+  }
+  scope :past, -> { where("created_at < ?", Time.zone.now.beginning_of_day).order('created_at DESC') }
+
   private
 
   def populate_rollup_fields!
