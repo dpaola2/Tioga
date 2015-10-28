@@ -1,5 +1,5 @@
 %h1 Your Bullet Journal
-%h5= @tomorrow.name
-%h3= @today.name
+= render 'topic', topic: @tomorrow
+= render 'topic', topic: @today
 - @past_topics.each do |topic|
-  %h3= topic.name
+  = render 'topic', topic: topic
