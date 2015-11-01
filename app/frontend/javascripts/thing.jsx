@@ -8,7 +8,7 @@ var Thing = React.createClass({
         };
     },
     toggleComplete: function(e) {
-        if (this.refs.completeCheckbox) {
+        if (this.refs.completeCheckbox.checked) {
             this.state.thing.complete = true
         } else {
             this.state.thing.complete = false
