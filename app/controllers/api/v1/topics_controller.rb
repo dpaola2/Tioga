@@ -6,13 +6,9 @@ class API::V1::TopicsController < ApplicationController
     @today = current_user.topics.today.first
     @past_topics = current_user.topics.past.limit(25)
     
-    render json: {
-             tomorrow: @tomorrow,
-             today: @today,
-             past_topics: @past_topics
-           }
+    render json: @past_topics # XXX
   end
-
+  
   def show
     @topic = current_user.topics.includes(:things).find(params[:id])
     render json: @topic.to_json(include: :things)
