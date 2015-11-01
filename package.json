@@ -1,0 +1,17 @@
+{
+    "name": "Tioga",
+    "description": "A bullet journal app",
+    "version": "1.0.0",
+    "devDependencies": {
+        "bootstrap": "~3.3.5",
+        "bootstrap-webpack": "~0.0.4",
+        "webpack": "~1.9.11",
+        "expose-loader": "~0.6.0",
+        "imports-loader": "~0.6.3",
+        "exports-loader": "~0.6.2",
+        "lodash": "~2.4.1",
+        "js-data": "~2.0.0",
+        "jquery": "~2.1.1"
+    },
+    "dependencies": {}
+}
