@@ -17,7 +17,7 @@ var Thing = store.defineResource({
                 foreignKey: 'topic_id'
             }
         }
-    }
+    },
 });
 
 var Topic = store.defineResource({
@@ -32,10 +32,7 @@ var Topic = store.defineResource({
     }
 });
 
-Topic.find(301).then(function(topic) {
-    console.log(topic);
-});
-
-Thing.find(1).then(function(thing) {
-    console.log(thing);
-});
+module.exports = {
+    Topic: Topic,
+    Thing: Thing
+}

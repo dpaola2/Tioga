@@ -1,4 +1,5 @@
 class API::V1::ThingsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_action :authenticate_user!
 
   def show
@@ -10,5 +11,16 @@ class API::V1::ThingsController < ApplicationController
     else
       render json: @thing.to_json(include: :topic)
     end
+  end
+
+  def create
+    @thing = Thing.create! thing_params
+    render json: @thing.to_json(include: :topic)
+  end
+
+  private
+
+  def thing_params
+    params.permit([:topic_id, :name])
   end
 end

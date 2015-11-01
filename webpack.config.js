@@ -20,9 +20,10 @@ var config = module.exports = {
             { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&minetype=application/font-woff2" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" },
+            { test: /\.jsx$/, loader: 'babel-loader?presets=babel-preset-react' }
         ]
-    }
+    },
 };
 
 config.output = {
@@ -32,7 +33,7 @@ config.output = {
 };
 
 config.resolve = {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     modulesDirectories: [ 'node_modules' ],
 };
 
