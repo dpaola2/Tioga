@@ -14,10 +14,8 @@ class API::V1::TopicsController < ApplicationController
   end
 
   def show
-    @topic = current_user.topics.find(params[:id])
-    render json: {
-             topic: @topic
-           }
+    @topic = current_user.topics.includes(:things).find(params[:id])
+    render json: @topic.to_json(include: :things)
   rescue ActiveRecord::RecordNotFound
     render json: {
              error: 'Topic not found.'
