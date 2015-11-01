@@ -5,11 +5,16 @@
     %title= content_for?(:title) ? yield(:title) : 'Tioga'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Tioga'}"}
     = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'bootstrap.css'
+    = stylesheet_link_tag 'bootstrap-theme.css'
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/js-data/2.0.0/js-data.js'
+    = javascript_include_tag 'bootstrap.min.js'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %header
-      = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+    .container  
+      %header
+        = render 'layouts/navigation'
+      %main{:role => "main"}
+        = render 'layouts/messages'
+        = yield

@@ -1,0 +1,10 @@
+%h3= topic.name
+- topic.things.each do |thing|
+  .row
+    .col-md-4
+      %span.glyphicon.glyphicon-star
+      %input{type: 'checkbox'}
+      %span= thing.name
+    .col-md-4
+      %button.btn.btn-default Subthing  
+      %button.btn.btn-default Postpone
