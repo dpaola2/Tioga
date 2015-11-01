@@ -18,9 +18,15 @@ class API::V1::ThingsController < ApplicationController
     render json: @thing.to_json(include: :topic)
   end
 
+  def update
+    @thing = Thing.find(params[:id])
+    @thing.update_attributes(thing_params)
+    render json: @thing.to_json(include: :topic)
+  end
+
   private
 
   def thing_params
-    params.permit([:topic_id, :name])
+    params.permit([:topic_id, :name, :complete])
   end
 end
