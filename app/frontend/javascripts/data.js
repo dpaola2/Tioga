@@ -17,7 +17,7 @@ var Thing = store.defineResource({
                 foreignKey: 'topic_id'
             }
         }
-    }
+    },
 });
 
 var Topic = store.defineResource({

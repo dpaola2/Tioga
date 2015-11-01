@@ -3,9 +3,39 @@
 var React = require('react');
 var Data = require('./data');
 
-var Topic = React.createClass({
+var NewThingForm = React.createClass({
+    handleSubmit: function(e) {
+        e.preventDefault();
+        
+        Data.Thing.create({
+            topic_id: this.props.topicId,
+            name: this.refs.newThingName.value
+        }).then(function (newThing) {
+            this.props.onNewThing(newThing);
+        }.bind(this));
+    },
     render: function() {
-        var things = this.props.data.things.map(function(thing) {
+        return <form onSubmit={ this.handleSubmit }>
+        <input ref="newThingName" type="text" /><input type="submit" className="btn btn-primary" value="Add Thing" />
+        </form>
+    }
+});
+
+var Topic = React.createClass({
+    getInitialState: function () {
+        return {
+            things: this.props.topic.things
+        };
+    },
+    handleNewThing: function(newThing) {
+        Data.Topic.find(newThing.topic_id).then(function(topic) {
+            this.setState({
+                things: topic.things
+            });
+        }.bind(this));
+    },
+    render: function() {
+        var things = this.state.things.map(function(thing) {
             console.log(thing);
             return <div className="row">
             <div className="col-md-1"><span className="glyphicon glyphicon-star" /></div>
@@ -14,8 +44,9 @@ var Topic = React.createClass({
             </div>
         });
         return <div>
-        <h2>{ this.props.data.name }</h2>
+        <h2>{ this.props.topic.name }</h2>
         { things }
+        <NewThingForm onNewThing={ this.handleNewThing } topicId={ this.props.topic.id } />
         </div>
     }
 });
@@ -38,7 +69,7 @@ var TopicList = React.createClass({
     render: function() {
         var topic_elements = this.state.topics.map(
             function(topic) {
-                return <Topic data={ topic } key={ topic.id }/>
+                return <Topic topic={ topic } key={ topic.id } />
             }
         );
         return <div className="container"> { topic_elements } </div>
