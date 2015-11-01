@@ -3,9 +3,22 @@
 var React = require('react');
 var Data = require('./data');
 
-var Topic = function(props) {
-    return <h2>{ props.data.name }</h2>
-};
+var Topic = React.createClass({
+    render: function() {
+        var things = this.props.data.things.map(function(thing) {
+            console.log(thing);
+            return <div className="row">
+            <div className="col-md-1"><span className="glyphicon glyphicon-star" /></div>
+            <div className="col-md-1"><input type="checkbox" /></div>
+            { thing.name }
+            </div>
+        });
+        return <div>
+        <h2>{ this.props.data.name }</h2>
+        { things }
+        </div>
+    }
+});
 
 var TopicList = React.createClass({
     getInitialState: function() {
@@ -28,7 +41,7 @@ var TopicList = React.createClass({
                 return <Topic data={ topic } key={ topic.id }/>
             }
         );
-        return <div> { topic_elements } </div>
+        return <div className="container"> { topic_elements } </div>
     }
 });
 
