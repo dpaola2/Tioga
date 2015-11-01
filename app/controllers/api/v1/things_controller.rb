@@ -1,22 +1,14 @@
 class API::V1::ThingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_topic
 
-  def index
-    @things = @topic.things
-    render json: {
-             topic: @topic,
-             things: @things
-           }
-  end
-
-  private
-
-  def find_topic
-    @topic = current_user.topics.find(params[:topic_id])
-  rescue ActiveRecord::RecordNotFound
-    render json: {
-             error: 'Topic not found.'
-           }
+  def show
+    @thing = Thing.includes(:topic).find(params[:id])
+    if @thing.topic.user != current_user
+      render json: {
+               error: 'Not your thing.'
+      }, status: 403
+    else
+      render json: @thing.to_json(include: :topic)
+    end
   end
 end
