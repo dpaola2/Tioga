@@ -7,9 +7,8 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-      resources :topics do
-        resources :things
-      end
+      resources :topics
+      resources :things
     end
   end
 end

@@ -9,7 +9,15 @@ httpAdapter.defaults.basePath = '/api/v1';
 store.registerAdapter('http', httpAdapter, { default: true });
 
 var Thing = store.defineResource({
-    name: 'things'
+    name: 'things',
+    relations: {
+        hasOne: {
+            topics: {
+                localField: 'topic',
+                foreignKey: 'topic_id'
+            }
+        }
+    }
 });
 
 var Topic = store.defineResource({
@@ -25,5 +33,9 @@ var Topic = store.defineResource({
 });
 
 Topic.find(301).then(function(topic) {
-    alert(topic.things);
+    console.log(topic);
+});
+
+Thing.find(1).then(function(thing) {
+    console.log(thing);
 });
