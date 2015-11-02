@@ -11,7 +11,7 @@ store.registerAdapter('http', httpAdapter, { default: true });
 var Thing = store.defineResource({
     name: 'things',
     relations: {
-        hasOne: {
+        belongsTo: {
             topics: {
                 localField: 'topic',
                 foreignKey: 'topic_id'
@@ -26,7 +26,7 @@ var Topic = store.defineResource({
         hasMany: {
             things: {
                 localField: 'things',
-                foreignKey: 'topic_id'
+                foreignKey: 'topic_id',
             }
         }
     }

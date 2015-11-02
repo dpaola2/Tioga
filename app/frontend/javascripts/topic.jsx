@@ -6,7 +6,7 @@ var NewThingForm = require('./newThing');
 var Topic = React.createClass({
     getInitialState: function () {
         return {
-            things: this.props.topic.things
+            things: _.sortBy(this.props.topic.things, function(n) { return n.created_at })
         };
     },
     handleNewThing: function(newThing) {
@@ -16,7 +16,7 @@ var Topic = React.createClass({
             }
         ).then(function(topic) {
             this.setState({
-                things: topic.things
+                things: _.sortBy(topic.things, function(n) { return n.created_at })
             });
         }.bind(this));
     },
