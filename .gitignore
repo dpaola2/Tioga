@@ -15,6 +15,7 @@
 /vendor/bundle/
 /vendor/ruby/
 /app/assets/javascripts
+.\#*
 /node_modules
 
 # minimal Rails specific artifacts

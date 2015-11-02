@@ -13,9 +13,15 @@ var NewThingForm = React.createClass({
         }.bind(this));
     },
     render: function() {
-        return <form onSubmit={ this.handleSubmit }>
-        <input ref="newThingName" type="text" /><input type="submit" className="btn btn-primary" value="Add Thing" />
+        return <div className="row">
+        <div className="col-md-offset-1">
+        <form onSubmit={ this.handleSubmit } className="form-inline">
+        <input ref="newThingName" type="text" className="form-control" />
+        &nbsp;
+        <input type="submit" className="btn btn-primary btn-sm form-control" value="Add Thing" />
         </form>
+        </div>
+        </div>
     }
 });
 

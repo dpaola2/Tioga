@@ -21,9 +21,14 @@ var Thing = React.createClass({
     },
     render: function() {
         return <div className="row">
-        <div className="col-md-1"><span className="glyphicon glyphicon-star" /></div>
-        <div className="col-md-1"><input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } /></div>
-        { this.state.thing.name }
+        <div className="col-md-1">
+          <span className="glyphicon glyphicon-star" />
+          &nbsp;
+          <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } />
+        </div>
+        <div className="col-md-6">
+          { this.state.thing.name }
+        </div>
         </div>
     }
 });
