@@ -5,20 +5,22 @@ var NewThingForm = require('./newThing');
 
 var Topic = React.createClass({
     getInitialState: function () {
-        return {
-            things: _.sortBy(this.props.topic.things, function(n) { return n.created_at })
-        };
+        return this.getState();
     },
-    handleNewThing: function(newThing) {
-        Data.Topic.find(
-            newThing.topic_id, {
-                orderBy: 'created_at'
-            }
-        ).then(function(topic) {
-            this.setState({
-                things: _.sortBy(topic.things, function(n) { return n.created_at })
-            });
-        }.bind(this));
+    getState: function() {
+        var topic = Data.Topic.get(this.props.topic.id);
+
+        return {
+            topic: topic,
+            things: _.sortBy(topic.things, function(n) { return n.created_at }),
+            id: topic.id
+        }
+    },
+    componentDidMount: function() {
+        Data.Topic.on('change', this.onChange);
+    },
+    onChange: function() {
+        this.setState(this.getState());
     },
     render: function() {
         var things = this.state.things.map(function(thing) {
@@ -27,7 +29,7 @@ var Topic = React.createClass({
         return <div>
         <h2>{ this.props.topic.name }</h2>
         { things }
-        <NewThingForm onNewThing={ this.handleNewThing } topicId={ this.props.topic.id } />
+        <NewThingForm onNewThing={ this.onChange } topicId={ this.props.topic.id } />
         </div>
     }
 });

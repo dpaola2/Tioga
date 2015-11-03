@@ -18,6 +18,13 @@ var Thing = store.defineResource({
             }
         }
     },
+    afterInject: function(resource, attrs) {
+        resource.emit('change');
+    },
+    afterUpdate: function(resource, attrs, callback) {
+        resource.emit('change');
+        return callback(null, attrs);
+    }
 });
 
 var Topic = store.defineResource({
@@ -29,6 +36,13 @@ var Topic = store.defineResource({
                 foreignKey: 'topic_id',
             }
         }
+    },
+    afterInject: function(resource, attrs) {
+        resource.emit('change');
+    },
+    afterUpdate: function(resource, attrs, callback) {
+        resource.emit('change');
+        return callback(null, attrs);
     }
 });
 

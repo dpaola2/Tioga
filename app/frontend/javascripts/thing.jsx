@@ -3,9 +3,20 @@ var Data = require('./data');
 
 var Thing = React.createClass({
     getInitialState: function() {
+        return this.getState();
+    },
+    getState: function() {
+        var thing = Data.Thing.get(this.props.thing.id);
+
         return {
-            thing: this.props.thing
+            thing: thing
         };
+    },
+    onChange: function() {
+        this.setState(this.getState());
+    },
+    componentDidMount: function() {
+        Data.Thing.on('change', this.onChange);
     },
     toggleComplete: function(e) {
         if (this.refs.completeCheckbox.checked) {
@@ -13,11 +24,7 @@ var Thing = React.createClass({
         } else {
             this.state.thing.complete = false
         }
-        this.state.thing.DSSave().then(function(thing) {
-            this.setState({
-                thing: thing
-            });
-        }.bind(this));
+        this.state.thing.DSSave();
     },
     render: function() {
         return <div className="row">
