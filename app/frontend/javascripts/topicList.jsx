@@ -25,7 +25,7 @@ var TopicList = React.createClass({
                 return <Topic topic={ topic } key={ topic.id } />
             }
         );
-        return <div className="container"> { topic_elements } </div>
+        return <div> { topic_elements } </div>
     }
 });
 

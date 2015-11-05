@@ -15,6 +15,7 @@ class Topic < ActiveRecord::Base
     where(:created_at => (date.beginning_of_day..date.end_of_day))
   }
   scope :past, -> { where("created_at < ?", Time.zone.now.beginning_of_day).order('created_at DESC') }
+  scope :future, -> { where("created_at > ?", Time.zone.now.beginning_of_day).order('created_at ASC') }
 
   private
 
