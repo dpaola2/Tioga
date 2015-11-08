@@ -2,7 +2,8 @@ require('./data');
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var TopicList = require('./topicList');
+var BulletJournal = require('./bulletJournal');
+var Data = require('./data');
 
-ReactDOM.render(<TopicList />, document.getElementById('past'));
-
+ReactDOM.render(<BulletJournal />, document.getElementById('content'));
+window.Data = Data;

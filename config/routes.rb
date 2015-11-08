@@ -7,10 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-      resources :topics do
-        get :past, on: :collection
-        get :future, on: :collection
-      end
+      resources :topics
       resources :things
     end
   end
