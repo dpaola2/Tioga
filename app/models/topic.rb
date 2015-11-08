@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   belongs_to :user
-  has_many :things
+  has_many :things, dependent: :destroy
   validates :name, presence: true
   validates :user_id, presence: true
 
@@ -15,6 +15,7 @@ class Topic < ActiveRecord::Base
     where(:created_at => (date.beginning_of_day..date.end_of_day))
   }
   scope :past, -> { where("created_at < ?", Time.zone.now.beginning_of_day).order('created_at DESC') }
+  scope :future, -> { where("created_at > ?", Time.zone.now.beginning_of_day).order('created_at ASC') }
 
   private
 
@@ -22,6 +23,7 @@ class Topic < ActiveRecord::Base
     self.week = (self.created_at - self.created_at.wday).strftime("%Y-%m-%d")
     self.day_of_week = self.created_at.strftime("%A")
     self.year_month = self.created_at.strftime("%Y-%m")
+    self.day_key = self.created_at.strftime("%Y%m%d")
     self.save!
   end
 end

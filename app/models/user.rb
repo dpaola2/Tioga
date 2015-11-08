@@ -4,15 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :topics
+  has_many :topics, dependent: :destroy
 
   after_create :create_day_topics!
 
   private
 
   def create_day_topics!
-    begin_date = Date.parse("2015-01-01")
-    end_date = Date.parse("2020-12-31")
+    begin_date = Date.parse("2015-09-01")
+    end_date = Date.parse("2018-12-31")
 
     (begin_date..end_date).each do |date|
       Topic.create!(

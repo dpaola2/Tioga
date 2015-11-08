@@ -33,7 +33,7 @@ var Thing = React.createClass({
           &nbsp;
           <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-5">
           { this.state.thing.name }
         </div>
         </div>
