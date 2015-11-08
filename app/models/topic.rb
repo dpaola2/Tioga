@@ -23,6 +23,7 @@ class Topic < ActiveRecord::Base
     self.week = (self.created_at - self.created_at.wday).strftime("%Y-%m-%d")
     self.day_of_week = self.created_at.strftime("%A")
     self.year_month = self.created_at.strftime("%Y-%m")
+    self.day_key = self.created_at.strftime("%Y%m%d")
     self.save!
   end
 end

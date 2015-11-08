@@ -20,19 +20,17 @@ var TopicList = React.createClass({
         }
     },
     pastTopics: function() {
-        var today = moment(Date.now());
+        var today = parseInt(moment(Date.now()).format("YYYYMMDD"));
         var filterOpts = {
             where: {
-                'things.length': {
-                    '>': 0
-                },
-                'createdAt': {
+                'day_key': {
                     '<=': today 
                 }
             },
             orderBy: [
-                ['createdAt', 'DESC']
-            ]
+                ['day_key', 'DESC']
+            ],
+            limit: 25
         };
         
         var topics = Data.Topic.filter(filterOpts);
@@ -41,7 +39,19 @@ var TopicList = React.createClass({
         };
     },
     futureTopics: function() {
-        var topics = Data.Topic.getAll();
+        var today = parseInt(moment(Date.now()).format("YYYYMMDD"));
+        var filterOpts = {
+            where: {
+                'day_key': {
+                    '>': today
+                },
+            },
+            orderBy: [
+                ['day_key']
+            ],
+            limit: 25
+        };
+        var topics = Data.Topic.filter(filterOpts);
         return {
             topics: topics
         };
