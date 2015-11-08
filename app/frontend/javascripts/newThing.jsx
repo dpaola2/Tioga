@@ -10,6 +10,7 @@ var NewThingForm = React.createClass({
             name: this.refs.newThingName.value
         }).then(function (newThing) {
             this.props.onNewThing(newThing);
+            this.refs.newThingName.value = "";
         }.bind(this));
     },
     render: function() {

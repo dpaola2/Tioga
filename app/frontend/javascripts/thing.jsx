@@ -26,14 +26,31 @@ var Thing = React.createClass({
         }
         this.state.thing.DSSave();
     },
+    toggleLegit: function(e) {
+        if (this.state.thing.legit == true) {
+            this.state.thing.legit = false;
+        } else {
+            this.state.thing.legit = true;
+        }
+        this.state.thing.DSSave();
+    },
     render: function() {
+        var style = {};
+        if (!this.state.thing.legit) {
+            style = {
+                'text-decoration': 'line-through',
+                'color': 'grey'
+            };
+        }
         return <div className="row">
         <div className="col-md-1">
           <span className="glyphicon glyphicon-star" />
           &nbsp;
           <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } />
+          &nbsp;
+          <span className="glyphicon glyphicon-remove" onClick={ this.toggleLegit } />
         </div>
-        <div className="col-md-5">
+        <div className="col-md-5" style={ style } >
           { this.state.thing.name }
         </div>
         </div>
