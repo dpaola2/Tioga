@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108170139) do
+ActiveRecord::Schema.define(version: 20151108173246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "things", force: true do |t|
-    t.string   "name",       default: "",     null: false
-    t.integer  "topic_id",                    null: false
-    t.string   "thing_type", default: "todo", null: false
-    t.boolean  "important",  default: false,  null: false
+    t.string   "name",            default: "",     null: false
+    t.integer  "topic_id",                         null: false
+    t.string   "thing_type",      default: "todo", null: false
+    t.boolean  "important",       default: false,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "complete",   default: false,  null: false
-    t.boolean  "legit",      default: true,   null: false
+    t.boolean  "complete",        default: false,  null: false
+    t.boolean  "legit",           default: true,   null: false
+    t.integer  "previous_id"
+    t.integer  "first_id"
+    t.integer  "times_postponed", default: 0,      null: false
   end
 
   create_table "topics", force: true do |t|

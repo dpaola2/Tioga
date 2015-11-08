@@ -27,6 +27,15 @@ class API::V1::ThingsController < ApplicationController
   private
 
   def thing_params
-    params.permit([:topic_id, :name, :complete, :legit])
+    params.permit(
+      [
+        :topic_id,
+        :name,
+        :complete,
+        :legit,
+        :previous_id,
+        :first_id,
+        :times_postponed
+      ])
   end
 end
