@@ -1,50 +1,40 @@
-Tioga
-================
+# Tioga
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+Tioga is a web app for [Bullet Journaling](http://bulletjournal.com).
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+# Problems? Issues?
 
-Problems? Issues?
------------
+Open a GitHub issue.
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
-
-Ruby on Rails
--------------
-
-This application requires:
+# Backend
 
 - Ruby 2.1.0
 - Rails 4.1.12
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+# Frontend
+
+- Webpack
+- React
+- JSData
 
 Getting Started
 ---------------
 
-Documentation and Support
--------------------------
+1. Install ruby: `rvm install 2.1.0`
+2. Install bundler: `gem install bundler`
+3. Install postgres: `brew install postgresql`
+4. Install backend dependencies: `bundle install`
+5. Install npm: `brew install npm`
+6. Install frontend dependencies: `npm install`
+7. Load the schema: `bin/rake db:schema:load`
+8. Install foreman: `gem install foreman`
+9. Run the server: `bin/foreman start`
 
-Issues
--------------
+# Contributing
 
-Similar Projects
-----------------
+# Credits
 
-Contributing
-------------
+# License
 
-Credits
--------
-
-License
--------
