@@ -12,22 +12,47 @@ var TopicList = React.createClass({
             topics: []
         }
     },
-    
-    componentDidMount: function() {
+    getState: function() {
         if (this.props.kind == "past") {
-
+            return this.pastTopics();
         } else if (this.props.kind == "future") {
-
+            return this.futureTopics();
         }
-        // TODO: Load all the topics in parent component, then
-        // filter here in the initialState and getState() functions
-        var topics = Data.Topic.findAll().then(function(topics) {
-            this.setState({
-                topics: topics
-            });
-        }.bind(this));
     },
-    
+    pastTopics: function() {
+        var today = moment(Date.now());
+        var filterOpts = {
+            where: {
+                'things.length': {
+                    '>': 0
+                },
+                'createdAt': {
+                    '<=': today 
+                }
+            },
+            orderBy: [
+                ['createdAt', 'DESC']
+            ]
+        };
+        
+        var topics = Data.Topic.filter(filterOpts);
+        return {
+            topics: topics
+        };
+    },
+    futureTopics: function() {
+        var topics = Data.Topic.getAll();
+        return {
+            topics: topics
+        };
+    },
+    componentDidMount: function() {
+        Data.Topic.on('change', this.onChange);
+        this.onChange();
+    },
+    onChange: function() {
+        this.setState(this.getState());
+    },
     render: function() {
         var topic_elements = this.state.topics.map(
             function(topic) {
