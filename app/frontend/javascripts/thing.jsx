@@ -38,7 +38,7 @@ var Thing = React.createClass({
         var style = {};
         if (!this.state.thing.legit) {
             style = {
-                'text-decoration': 'line-through',
+                'textDecoration': 'line-through',
                 'color': 'grey'
             };
         }
