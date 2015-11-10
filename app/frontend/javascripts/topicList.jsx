@@ -9,51 +9,12 @@ var Topic = require('./topic');
 var TopicList = React.createClass({
     getInitialState: function() {
         return {
-            topics: []
-        }
+            topics: this.props.topicQuery()
+        };
     },
     getState: function() {
-        if (this.props.kind == "past") {
-            return this.pastTopics();
-        } else if (this.props.kind == "future") {
-            return this.futureTopics();
-        }
-    },
-    pastTopics: function() {
-        var today = parseInt(moment(Date.now()).format("YYYYMMDD"));
-        var filterOpts = {
-            where: {
-                'day_key': {
-                    '<=': today 
-                }
-            },
-            orderBy: [
-                ['day_key', 'DESC']
-            ],
-            limit: 25
-        };
-        
-        var topics = Data.Topic.filter(filterOpts);
         return {
-            topics: topics
-        };
-    },
-    futureTopics: function() {
-        var today = parseInt(moment(Date.now()).format("YYYYMMDD"));
-        var filterOpts = {
-            where: {
-                'day_key': {
-                    '>': today
-                },
-            },
-            orderBy: [
-                ['day_key']
-            ],
-            limit: 25
-        };
-        var topics = Data.Topic.filter(filterOpts);
-        return {
-            topics: topics
+            topics: this.props.topicQuery()
         };
     },
     componentDidMount: function() {

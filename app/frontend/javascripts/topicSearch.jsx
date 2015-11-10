@@ -3,9 +3,14 @@
 var React = require('react');
 
 var TopicSearch = React.createClass({
+    onChange: function(e) {
+        e.preventDefault();
+
+        this.props.onChange(this.refs.query.value);
+    },
     render: function() {
         return <span>
-        <input type="text" className="form-control form-inline" placeholder="Search..." />
+        <input type="text" ref="query" className="form-control form-inline" placeholder="Search..." onChange={ this.onChange } />
         </span>
     }
 });
