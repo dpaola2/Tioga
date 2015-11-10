@@ -35,7 +35,8 @@ class API::V1::ThingsController < ApplicationController
         :legit,
         :previous_id,
         :first_id,
-        :times_postponed
+        :times_postponed,
+        :thing_type
       ])
   end
 end

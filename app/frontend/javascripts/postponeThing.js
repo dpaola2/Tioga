@@ -27,6 +27,7 @@ var postponeThing = function(thing) {
     
     Data.Thing.create({
         topic_id: tomorrowTopic.id,
+        thing_type: thing.thing_type,
         name: thing.name,
         times_postponed: thing.times_postponed + 1,
         previous_id: thing.id,

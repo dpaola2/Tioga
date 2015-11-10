@@ -38,6 +38,17 @@ var Thing = React.createClass({
     postpone: function() {
         postponeThing(this.state.thing);
     },
+    actionColumn: function() {
+        var cursorStyle = {
+            cursor: 'pointer'
+        };
+
+        if (this.state.thing.thing_type == 'todo') {
+            return <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } style={ cursorStyle } />
+        } else if (this.state.thing.thing_type == 'note') {
+            return <span className="glyphicon glyphicon-info-sign" />
+        }        
+    },
     render: function() {
         var style = {};
         if (!this.state.thing.legit) {
@@ -50,17 +61,19 @@ var Thing = React.createClass({
         var cursorStyle = {
             cursor: 'pointer'
         };
+        
+
         return <div className="row">
-        <div className="col-md-1">
+        <div className="col-md-2">
           <span className="glyphicon glyphicon-star" style={ cursorStyle } />
           &nbsp;
-          <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } style={ cursorStyle } />
+          { this.actionColumn() }
           &nbsp;
           <span className="glyphicon glyphicon-remove" onClick={ this.toggleLegit } style={ cursorStyle } />
           &nbsp;
           <span className="glyphicon glyphicon-time" onClick={ this.postpone } style={ cursorStyle }/>
         </div>
-        <div className="col-md-5" style={ style } >
+        <div className="col-md-4" style={ style } >
           { this.state.thing.name }
         </div>
         </div>
