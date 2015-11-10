@@ -27,6 +27,13 @@ var Thing = React.createClass({
         }
         this.state.thing.DSSave();
     },
+    toggleImportant: function(e) {
+        if (this.state.thing.important)
+            this.state.thing.important = false;
+        else
+            this.state.thing.important = true;
+        this.state.thing.DSSave();
+    },
     toggleLegit: function(e) {
         if (this.state.thing.legit == true) {
             this.state.thing.legit = false;
@@ -51,6 +58,18 @@ var Thing = React.createClass({
             return <span className="glyphicon glyphicon-calendar" />
         }
     },
+    importantColumn: function() {
+        var cursorStyle = {
+            cursor: 'pointer'
+        };
+
+        if (this.state.thing.important == true) {
+            return <span className="glyphicon glyphicon-star" style={ cursorStyle } onClick={ this.toggleImportant } />
+        } else {
+            return <span className="glyphicon" style={ cursorStyle } onClick={ this.toggleImportant }>&nbsp;</span>
+        }
+            
+    },
     render: function() {
         var style = {};
         if (!this.state.thing.legit) {
@@ -59,15 +78,14 @@ var Thing = React.createClass({
                 'color': 'grey'
             };
         }
-
         var cursorStyle = {
             cursor: 'pointer'
         };
-        
+
 
         return <div className="row">
         <div className="col-md-2">
-          <span className="glyphicon glyphicon-star" style={ cursorStyle } />
+          { this.importantColumn() }
           &nbsp;
           { this.actionColumn() }
           &nbsp;

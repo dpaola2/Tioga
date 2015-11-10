@@ -36,7 +36,8 @@ class API::V1::ThingsController < ApplicationController
         :previous_id,
         :first_id,
         :times_postponed,
-        :thing_type
+        :thing_type,
+        :important
       ])
   end
 end

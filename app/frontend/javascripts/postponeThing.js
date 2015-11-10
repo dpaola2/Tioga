@@ -31,7 +31,8 @@ var postponeThing = function(thing) {
         name: thing.name,
         times_postponed: thing.times_postponed + 1,
         previous_id: thing.id,
-        original_id: originalId
+        original_id: originalId,
+        important: thing.important
     });
     
     // mark this thing as not legit
