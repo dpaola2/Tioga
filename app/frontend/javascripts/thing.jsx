@@ -47,7 +47,9 @@ var Thing = React.createClass({
             return <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } style={ cursorStyle } />
         } else if (this.state.thing.thing_type == 'note') {
             return <span className="glyphicon glyphicon-info-sign" />
-        }        
+        } else if (this.state.thing.thing_type == 'event') {
+            return <span className="glyphicon glyphicon-calendar" />
+        }
     },
     render: function() {
         var style = {};

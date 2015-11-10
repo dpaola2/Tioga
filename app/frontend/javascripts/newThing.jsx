@@ -28,15 +28,24 @@ var NewThingForm = React.createClass({
             thingType: 'note'
         });
     },
+    handleAddEvent: function(e) {
+        e.preventDefault();
+
+        this.addThing({
+            name: this.refs.newThingName.value,
+            thingType: 'event'
+        });
+    },
     render: function() {
         return <div className="row">
         <div className="col-md-offset-1">
-          <form className="form-inline">
-            <input ref="newThingName" type="text" className="form-control" />
-            &nbsp;
-            <button className="btn btn-primary btn-sm form-control" onClick={ this.handleAddTodo }>Add Todo</button>
-            <button className="btn btn-info btn-sm form-control" onClick={ this.handleAddNote }>Add Note</button>
-          </form>
+        <form className="form-inline">
+        <input ref="newThingName" type="text" className="form-control" />
+        &nbsp;
+        <button className="btn btn-primary btn-sm form-control" onClick={ this.handleAddTodo }>Add Todo</button>
+        <button className="btn btn-info btn-sm form-control" onClick={ this.handleAddNote }>Add Note</button>
+        <button className="btn btn-warning btn-sm form-control" onClick={ this.handleAddEvent }>Add Event</button>
+        </form>
         </div>
         </div>
     }
