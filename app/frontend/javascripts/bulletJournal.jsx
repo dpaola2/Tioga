@@ -8,11 +8,44 @@ var Data = require('./data');
 var moment = require('moment');
 
 var BulletJournal = React.createClass({
+    getInitialState: function() {
+        return {
+            searchQuery: false,
+            pastTopics: [],
+            futureTopics: []
+        };
+    },
     searchChanged: function(query) {
         console.log(query);
+        if (query.length > 0) {
+            this.setState({
+                searchQuery: query
+            });
+        } else {
+            this.setState({
+                searchQuery: false
+            });
+        }
+    },
+    searchTopics: function() {
+        console.log("searching");
+        var filterOpts = {
+            where: {
+                'name': {
+                    'contains': this.state.searchQuery
+                }
+            }
+        };
+        var topics = Data.Topic.filter(filterOpts);
+        return topics;
     },
     componentDidMount: function() {
-        Data.Topic.findAll();
+        Data.Topic.findAll().then(function() {
+            this.setState({
+                pastTopics: this.pastTopics(),
+                futureTopics: this.futureTopics()
+            });
+        }.bind(this));
     },
     pastTopics: function() {
         var today = parseInt(moment(Date.now()).format("YYYYMMDD"));
@@ -49,10 +82,17 @@ var BulletJournal = React.createClass({
     },
     render: function() {
         var contents;
-        contents = <div>
-        <div className="col-md-6"><TopicList topicQuery={ this.pastTopics } /></div>
-        <div className="col-md-6"><TopicList topicQuery={ this.futureTopics } /></div>
-        </div>
+        if (this.state.searchQuery != false) {
+            console.log("rendering search results");
+            contents = <div>
+            <div className="col-md-6"><TopicList topics={ this.searchTopics() } /></div>
+            </div>
+        } else {
+            contents = <div>
+            <div className="col-md-6"><TopicList topics={ this.state.pastTopics } /></div>
+            <div className="col-md-6"><TopicList topics={ this.state.futureTopics } /></div>
+            </div>
+        }
 
         return <div>
         <div className="row">
@@ -66,7 +106,7 @@ var BulletJournal = React.createClass({
         </div>
         </div>
         <div className="row">
-            {contents}
+            { contents }
         </div>
         </div>
     }

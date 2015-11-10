@@ -9,12 +9,12 @@ var Topic = require('./topic');
 var TopicList = React.createClass({
     getInitialState: function() {
         return {
-            topics: this.props.topicQuery()
+            topics: this.props.topics
         };
     },
     getState: function() {
         return {
-            topics: this.props.topicQuery()
+            topics: this.props.topics
         };
     },
     componentDidMount: function() {
@@ -25,7 +25,7 @@ var TopicList = React.createClass({
         this.setState(this.getState());
     },
     render: function() {
-        var topic_elements = this.state.topics.map(
+        var topic_elements = this.props.topics.map(
             function(topic) {
                 return <Topic topic={ topic } key={ topic.id } />
             }
