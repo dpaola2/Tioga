@@ -20,10 +20,10 @@ var Thing = React.createClass({
         Data.Thing.on('change', this.onChange);
     },
     toggleComplete: function(e) {
-        if (this.refs.completeCheckbox.checked) {
-            this.state.thing.complete = true
-        } else {
+        if (this.state.thing.complete) {
             this.state.thing.complete = false
+        } else {
+            this.state.thing.complete = true
         }
         this.state.thing.DSSave();
     },
@@ -51,7 +51,10 @@ var Thing = React.createClass({
         };
 
         if (this.state.thing.thing_type == 'todo') {
-            return <input type="checkbox" ref="completeCheckbox" defaultChecked={ this.state.thing.complete } onChange={ this.toggleComplete } style={ cursorStyle } />
+            if (this.state.thing.complete)
+                return <span className="glyphicon glyphicon-check" style={ cursorStyle } onClick={ this.toggleComplete } />
+            else
+                return <span className="glyphicon glyphicon-unchecked" style={ cursorStyle } onClick={ this.toggleComplete } />
         } else if (this.state.thing.thing_type == 'note') {
             return <span className="glyphicon glyphicon-info-sign" />
         } else if (this.state.thing.thing_type == 'event') {
@@ -62,7 +65,7 @@ var Thing = React.createClass({
         var cursorStyle = {
             cursor: 'pointer'
         };
-
+        
         if (this.state.thing.important == true) {
             return <span className="glyphicon glyphicon-star" style={ cursorStyle } onClick={ this.toggleImportant } />
         } else {
@@ -73,11 +76,12 @@ var Thing = React.createClass({
     render: function() {
         var style = {};
         if (!this.state.thing.legit) {
-            style = {
-                'textDecoration': 'line-through',
-                'color': 'grey'
-            };
+            style.textDecoration = 'line-through';
+            style.color = 'grey';
         }
+        if (this.state.thing.complete)
+            style.color = 'grey';
+        
         var cursorStyle = {
             cursor: 'pointer'
         };

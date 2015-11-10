@@ -1,4 +1,5 @@
 class API::V1::TopicsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_action :authenticate_user!
   
   def index
@@ -13,5 +14,19 @@ class API::V1::TopicsController < ApplicationController
     render json: {
              error: 'Topic not found.'
            }
+  end
+
+  def create
+    @topic = current_user.topics.create! topic_params
+    render json: @topic.to_json(include: :things)
+  end
+
+  private
+
+  def topic_params
+    params.permit(
+      [
+        :name
+      ])
   end
 end
