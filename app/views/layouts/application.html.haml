@@ -13,4 +13,6 @@
       %main{:role => "main"}
         = render 'layouts/messages'
         = yield
-    = javascript_include_tag 'bundle'
+    = webpack_manifest_script
+    = webpack_bundle_tag 'common'
+    //= javascript_include_tag 'bundle'
