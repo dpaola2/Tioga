@@ -1,7 +1,5 @@
 # Tioga
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
 Tioga is a web app for [Bullet Journaling](http://bulletjournal.com).
 
 # Problems? Issues?
