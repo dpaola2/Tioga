@@ -1,29 +1,28 @@
 {
-    "name": "Tioga",
-    "description": "A bullet journal app",
-    "version": "1.0.0",
-    "devDependencies": {
-
-    },
-    "dependencies": {
-        "babel-core": "^6.0.14",
-        "babel-loader": "^6.0.0",
-        "babel-preset-react": "^6.0.14",
-        "chunk-manifest-webpack-plugin": "0.0.1",
-        "lodash": "^3.10.1",
-        "moment": "^2.10.6",
-        "bootstrap": "~3.3.5",
-        "bootstrap-webpack": "~0.0.4",
-        "webpack": "~1.9.11",
-        "expose-loader": "~0.6.0",
-        "imports-loader": "~0.6.3",
-        "exports-loader": "~0.6.2",
-        "lodash": "~2.4.1",
-        "js-data": "~2.0.0",
-        "js-data-http": "~2.1.2",
-        "jquery": "~2.1.1",
-        "react": "~0.14.1",
-        "react-dom": "~0.14.1",
-        "jsx-loader": "~0.13.2"
-    }
+  "name": "Tioga",
+  "description": "A bullet journal app",
+  "version": "1.0.0",
+  "devDependencies": {
+    "bootstrap": "~3.3.5",
+    "bootstrap-webpack": "~0.0.4",
+    "expose-loader": "~0.6.0",
+    "imports-loader": "~0.6.3",
+    "exports-loader": "~0.6.2",
+    "lodash": "~2.4.1",
+    "js-data": "~2.0.0",
+    "js-data-http": "~2.1.2",
+    "jquery": "~2.1.1",
+    "react": "~0.14.1",
+    "react-dom": "~0.14.1",
+    "jsx-loader": "~0.13.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.0.14",
+    "babel-loader": "^6.0.0",
+    "babel-preset-react": "^6.0.14",
+    "chunk-manifest-webpack-plugin": "0.0.1",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "webpack": "~1.9.11"
+  }
 }
