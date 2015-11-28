@@ -23,6 +23,7 @@
     "chunk-manifest-webpack-plugin": "0.0.1",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
+    "node-libs-browser": "^0.5.3",
     "webpack": "~1.9.11"
   }
 }
