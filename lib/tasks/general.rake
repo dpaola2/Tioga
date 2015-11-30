@@ -8,7 +8,7 @@ namespace :webpack do
     
     cmd = 'webpack --json --config #{Rails.root}/config/webpack/production.config.js'
     output = `#{cmd}`
-    puts output
+
     stats = JSON.parse(output)
 
     File.open("#{Rails.root}/public/assets/webpack-asset-manifest.json", 'w') do |f|
