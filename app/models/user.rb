@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     (begin_date..end_date).each do |date|
       Topic.create!(
         user_id: self.id,
-        name: date.strftime("%a, %b %d"),
+        name: date.strftime("%a, %b %d %Y"),
         created_at: date
       )
     end
