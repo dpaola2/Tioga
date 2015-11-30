@@ -6,13 +6,8 @@ namespace :webpack do
   task :compile do
     Rake::Task["assets:environment"].invoke
     
-    cmd = "webpack --json --config #{Rails.root}/config/webpack/production.config.js"
+    cmd = "webpack --config #{Rails.root}/config/webpack/production.config.js"
     output = `#{cmd}`
-
-    stats = JSON.parse(output)
-
-    File.open("#{Rails.root}/public/assets/webpack-asset-manifest.json", 'w') do |f|
-      f.write stats['assetsByChunkName'].to_json
-    end
+    puts output
   end
 end
