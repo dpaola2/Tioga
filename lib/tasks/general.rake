@@ -6,7 +6,7 @@ namespace :webpack do
   task :compile do
     Rake::Task["assets:environment"].invoke
     
-    cmd = "webpack --config #{Rails.root}/config/webpack/production.config.js"
+    cmd = "webpack --config #{Rails.root}/webpack.config.js"
     output = `#{cmd}`
     puts output
   end
