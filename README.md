@@ -2,23 +2,31 @@
 
 Tioga is a web app for [Bullet Journaling](http://bulletjournal.com).
 
-# Problems? Issues?
+Demo: [tioga.davezor.net](http://tioga.davezor.net).
 
-Open a GitHub issue.
+## Problems? Issues?
 
-# Backend
+If you encounter a bug or any other issue, please feel free to file a github issue.
+
+
+## Contributing
+
+Pull requests are welcome!
+
+# Getting Started
+
+Backend:
 
 - Ruby 2.1.0
 - Rails 4.1.12
 
-# Frontend
+Frontend:
 
 - Webpack
 - React
 - JSData
 
-Getting Started
----------------
+## Installation
 
 1. Install ruby: `rvm install 2.1.0`
 2. Install bundler: `gem install bundler`
@@ -30,12 +38,12 @@ Getting Started
 8. Install foreman: `gem install foreman`
 9. Run the server: `bin/foreman start`
 
-# Contributing
-
 # Credits
+
+@dpaola2
 
 # License
 
-
+This software is released under the NCSA Public License.
 
 
