@@ -30,5 +30,10 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "~1.9.11"
+  },
+  "license": "NCSA",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/dpaola2/Tioga/"
   }
 }

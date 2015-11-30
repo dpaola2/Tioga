@@ -22,21 +22,23 @@ Backend:
 
 Frontend:
 
-- Webpack
-- React
-- JSData
+- [Webpack](https://webpack.github.io/)
+- [React](https://facebook.github.io/react/)
+- [JSData](http://www.js-data.io/)
 
 ## Installation
 
-1. Install ruby: `rvm install 2.1.0`
-2. Install bundler: `gem install bundler`
-3. Install postgres: `brew install postgresql`
-4. Install backend dependencies: `bundle install`
-5. Install npm: `brew install npm`
-6. Install frontend dependencies: `npm install`
-7. Load the schema: `bin/rake db:schema:load`
-8. Install foreman: `gem install foreman`
-9. Run the server: `bin/foreman start`
+1. Install rvm: https://rvm.io/
+1. Install ruby: `rvm install 2.1.7`
+1. Install bundler: `gem install bundler`
+1. Install postgres: `brew install postgresql`
+1. Install backend dependencies: `bundle install`
+1. Install node: `brew install node`
+1. Install frontend dependencies: `npm install .`
+1. Load the schema: `bin/rake db:schema:load`
+1. Install foreman: `gem install foreman`
+1. Run the server: `bin/foreman start`
+1. View the running site at http://localhost:5000
 
 # Credits
 
