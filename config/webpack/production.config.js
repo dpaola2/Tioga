@@ -5,7 +5,7 @@ var path = require('path');
 
 var config = module.exports = require('./main.config.js')
 
-config.output.path = path.join(config.context, '..', '..', 'public', 'assets');
+config.output.path = path.join(config.context, '..', '..', 'app', 'assets', 'javascripts');
 /*config.output = _.merge(config.output, {
   path: path.join(config.context, 'public', 'assets'),
   filename: '[name]-bundle-[chunkhash].js',
