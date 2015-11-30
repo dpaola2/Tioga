@@ -43,7 +43,7 @@ Frontend:
 
 If you would rather use docker than the system postgres, you can follow these
 instructions. They assume you're already somewhat familiar with docker; if you
-aren't, you may want to just use the system docker.
+aren't, you may want to just use the system postgres.
 
 1. Set up docker and a docker-machine (https://docs.docker.com/engine/installation/mac/)
 1. Install docker-compose if you haven't already: `brew install docker-compose`
