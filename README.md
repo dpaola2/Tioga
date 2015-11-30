@@ -38,6 +38,25 @@ Frontend:
 8. Install foreman: `gem install foreman`
 9. Run the server: `bin/foreman start`
 
+
+## Docker dev setup (optional)
+
+If you would rather use docker than the system postgres, you can follow these
+instructions. They assume you're already somewhat familiar with docker; if you
+aren't, you may want to just use the system docker.
+
+1. Set up docker and a docker-machine (https://docs.docker.com/engine/installation/mac/)
+1. Install docker-compose if you haven't already: `brew install docker-compose`
+1. Start postgres: `docker-compose start`
+1. Put the following in `config/database.yml`
+
+   ```yml
+    development:
+      url: postgres://postgres:postgres@<%= `docker-machine ip dev-docker`.strip %>:<%= `docker-compose port postgres 5432`.partition(':')[2].chomp %>/postgres?pool=5
+    ```
+
+All rails and rake commands will now apply to your docker postgres.
+
 # Credits
 
 @dpaola2
