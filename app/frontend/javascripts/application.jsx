@@ -8,3 +8,4 @@ var Data = require('./data');
 ReactDOM.render(<BulletJournal />, document.getElementById('content'));
 window.Data = Data;
 window.moment = require('moment');
+
