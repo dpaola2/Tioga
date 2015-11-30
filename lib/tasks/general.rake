@@ -6,7 +6,7 @@ namespace :webpack do
   task :compile do
     Rake::Task["assets:environment"].invoke
     
-    cmd = 'webpack --json --config #{Rails.root}/config/webpack/production.config.js'
+    cmd = "webpack --json --config #{Rails.root}/config/webpack/production.config.js"
     output = `#{cmd}`
 
     stats = JSON.parse(output)
