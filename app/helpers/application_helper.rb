@@ -7,7 +7,7 @@ module ApplicationHelper
 
         filename
       else
-        "#{bundle}-bundle"
+        "bundle"
       end
 
     javascript_include_tag(src)
