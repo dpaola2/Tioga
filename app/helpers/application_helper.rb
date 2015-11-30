@@ -15,6 +15,6 @@ module ApplicationHelper
 
   def webpack_manifest_script
     return '' unless Rails.configuration.webpack[:use_manifest]
-    javascript_tag "window.webpackManifest = #{Rails.configuration.webpack[:common_manifest]}"
+    javascript_tag "window.webpackManifest = #{Rails.configuration.webpack[:asset_manifest]}"
   end
 end
