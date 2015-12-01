@@ -37,18 +37,24 @@ var NewThingForm = React.createClass({
         });
     },
     render: function() {
+
+        var noPadding = {
+            paddingLeft: '0px',
+            paddingRight: '0px'
+        };
+
         return <div className="row">
         <form className="form-inline">
-        <div className="col-md-2">
+        <div className="col-md-1" style={ noPadding }>
+        </div>
+        <div className="col-md-5">
+        <input ref="newThingName" type="text" className="form-control" placeholder="Add new..." />
+        <br />
         <div className="btn-group">
         <button className="btn btn-primary btn-sm form-control" onClick={ this.handleAddTodo }>Todo</button>
         <button className="btn btn-info btn-sm form-control" onClick={ this.handleAddNote }>Note</button>
         <button className="btn btn-warning btn-sm form-control" onClick={ this.handleAddEvent }>Event</button>
         </div>
-        </div>
-        <div className="col-md-4">
-        <input ref="newThingName" type="text" className="form-control" placeholder="Add new..." />
-        &nbsp;
         </div>
         </form>
         </div>
