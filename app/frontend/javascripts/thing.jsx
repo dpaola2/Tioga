@@ -86,9 +86,13 @@ var Thing = React.createClass({
             cursor: 'pointer'
         };
 
+        var noPadding = {
+            paddingLeft: '0px',
+            paddingRight: '0px'
+        };
 
         return <div className="row">
-        <div className="col-md-2">
+        <div className="col-md-1" style={ noPadding }>
           { this.importantColumn() }
           &nbsp;
           { this.actionColumn() }
@@ -97,7 +101,7 @@ var Thing = React.createClass({
           &nbsp;
           <span className="glyphicon glyphicon-time" onClick={ this.postpone } style={ cursorStyle }/>
         </div>
-        <div className="col-md-4" style={ style } >
+        <div className="col-md-5" style={ style } >
           { this.state.thing.name }
         </div>
         </div>
