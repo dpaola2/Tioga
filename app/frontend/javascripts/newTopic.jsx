@@ -3,6 +3,11 @@
 var React = require('react');
 
 var NewTopic = React.createClass({
+    getInitialState: function() {
+        return {
+            focused: false,
+        };
+    },
     handleNewTopic: function(e) {
         e.preventDefault();
 
@@ -13,22 +18,35 @@ var NewTopic = React.createClass({
             this.refs.topicName.value = "";
         }.bind(this));
     },
+    handleFocusChange: function(e) {
+        this.setState({
+            focused: !this.state.focused,
+        });
+    },
     render: function() {
-        return <div style={this.props.style}>
-        <form className="form-inline">
-            <div className="input-group">
+        var focused = this.state.focused;
+        var className = focused ? 'col-md-6' : 'col-md-3';
+        var buttonMarkup = null;
+        if (focused) {
+            buttonMarkup = <span className="input-group-btn">
+                <button
+                    className="btn btn-primary"
+                    onClick={ this.handleNewTopic }
+                >Add Topic</button>
+            </span>;
+        }
+        return <div style={this.props.style} className={className}>
+        <form>
+            <div className={focused ? 'input-group' : ''}>
                 <input
                     type="text"
                     ref="topicName"
-                    className="form-inline form-control"
+                    className="form-control"
+                    onFocus={this.handleFocusChange}
+                    onBlur={this.handleFocusChange}
                     placeholder="New Topic..."
                 />
-                <span className="input-group-btn">
-                    <button
-                        className="btn btn-primary"
-                        onClick={ this.handleNewTopic }
-                    >Add Topic</button>
-                </span>
+                {buttonMarkup}
             </div>
         </form>
         </div>

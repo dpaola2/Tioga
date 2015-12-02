@@ -3,14 +3,25 @@
 var React = require('react');
 
 var TopicSearch = React.createClass({
+    getInitialState: function() {
+        return {
+            focused: false,
+        };
+    },
     onChange: function(e) {
         e.preventDefault();
 
         this.props.onChange(this.refs.query.value);
     },
+    onFocusChange: function() {
+        this.setState({
+            focused: !this.state.focused,
+        });
+    },
     render: function() {
-        return <span style={this.props.style}>
-        <input type="text" ref="query" className="form-control form-inline" placeholder="Search..." onChange={ this.onChange } />
+        var className = this.state.focused ? 'col-md-9' : 'col-md-3';
+        return <span style={this.props.style} className={className}>
+        <input type="text" onFocus={this.onFocusChange} onBlur={this.onFocusChange} ref="query" className="form-control form-inline" placeholder="Search..." onChange={ this.onChange } />
         </span>
     }
 });

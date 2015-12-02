@@ -96,14 +96,8 @@ var BulletJournal = React.createClass({
 
         return <div>
         <div className="row">
-        <div className="col-md-12">
-        <TopicSearch onChange={ this.searchChanged } style={{ margin: '10px 0' }} />
-        </div>
-        </div>
-        <div className="row">
-        <div className="col-md-12">
-        <NewTopic style={{ margin: '10px 0' }} />
-        </div>
+            <TopicSearch onChange={ this.searchChanged } style={{ margin: '10px 0' }} />
+            <NewTopic style={{ margin: '10px 0' }} />
         </div>
         <div className="row">
             { contents }
