@@ -1,6 +1,11 @@
 var React = require('react')
 var Data = require('./data')
 
+var inputStyle = {
+    width: '100%',
+    margin: '10px 0',
+};
+
 var NewThingForm = React.createClass({
     addThing: function(opts) {
         Data.Thing.create({
@@ -14,7 +19,7 @@ var NewThingForm = React.createClass({
     },
     handleAddTodo: function(e) {
         e.preventDefault();
-        
+
         this.addThing({
             name: this.refs.newThingName.value,
             thingType: 'todo'
@@ -22,7 +27,7 @@ var NewThingForm = React.createClass({
     },
     handleAddNote: function(e) {
         e.preventDefault();
-        
+
         this.addThing({
             name: this.refs.newThingName.value,
             thingType: 'note'
@@ -44,18 +49,29 @@ var NewThingForm = React.createClass({
         };
 
         return <div className="row">
-        <form className="form-inline">
-        <div className="col-md-1" style={ noPadding }>
-        </div>
-        <div className="col-md-5">
-        <input ref="newThingName" type="text" className="form-control" placeholder="Add new..." />
-        <br />
-        <div className="btn-group">
-        <button className="btn btn-primary btn-sm form-control" onClick={ this.handleAddTodo }>Todo</button>
-        <button className="btn btn-info btn-sm form-control" onClick={ this.handleAddNote }>Note</button>
-        <button className="btn btn-warning btn-sm form-control" onClick={ this.handleAddEvent }>Event</button>
-        </div>
-        </div>
+        <form className="col-md-6">
+            <div className="input-group" style={inputStyle}>
+                <input
+                    ref="newThingName"
+                    type="text"
+                    className="form-control"
+                    placeholder="Add new..."
+                />
+                <div className="input-group-btn input-group-sm">
+                    <button
+                        className="btn btn-primary"
+                        onClick={ this.handleAddTodo }
+                    >Todo</button>
+                    <button
+                        className="btn btn-info"
+                        onClick={ this.handleAddNote }
+                    >Note</button>
+                    <button
+                        className="btn btn-warning"
+                        onClick={ this.handleAddEvent }
+                    >Event</button>
+                </div>
+            </div>
         </form>
         </div>
     }
