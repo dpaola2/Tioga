@@ -20,9 +20,9 @@ var TopicSearch = React.createClass({
     },
     render: function() {
         var className = this.state.focused ? 'expanding-input col-md-9' : 'expanding-input col-md-3';
-        return <span style={this.props.style} className={className}>
+        return <div style={this.props.style} className={className}>
         <input type="text" onFocus={this.onFocusChange} onBlur={this.onFocusChange} ref="query" className="form-control form-inline" placeholder="Search..." onChange={ this.onChange } />
-        </span>
+        </div>
     }
 });
 
