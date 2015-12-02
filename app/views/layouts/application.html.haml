@@ -9,7 +9,7 @@
     = javascript_include_tag "bundle"
   %body
     .container
-      %header
+      %header{:class => "row"}
         = render 'layouts/navigation'
       %main{:class => "row", :role => "main"}
         = render 'layouts/messages'
