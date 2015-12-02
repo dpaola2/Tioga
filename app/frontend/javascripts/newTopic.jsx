@@ -25,7 +25,7 @@ var NewTopic = React.createClass({
     },
     render: function() {
         var focused = this.state.focused;
-        var className = focused ? 'col-md-6' : 'col-md-3';
+        var className = focused ? 'expanding-input col-md-6' : 'expanding-input col-md-3';
         var buttonMarkup = null;
         if (focused) {
             buttonMarkup = <span className="input-group-btn">
