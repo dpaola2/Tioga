@@ -13,6 +13,7 @@ gem 'pg'
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'newrelic_rpm'
+gem 'rollbar', '~> 1.2.7'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
