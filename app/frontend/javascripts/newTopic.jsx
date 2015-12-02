@@ -16,8 +16,20 @@ var NewTopic = React.createClass({
     render: function() {
         return <div>
         <form className="form-inline">
-        <input type="text" ref="topicName" className="form-inline form-control" placeholder="New Topic..." />
-        <button className="btn btn-primary btn-sm form-control" onClick={ this.handleNewTopic }>Add Topic</button>
+            <div className="input-group">
+                <input
+                    type="text"
+                    ref="topicName"
+                    className="form-inline form-control"
+                    placeholder="New Topic..."
+                />
+                <span className="input-group-btn">
+                    <button
+                        className="btn btn-primary"
+                        onClick={ this.handleNewTopic }
+                    >Add Topic</button>
+                </span>
+            </div>
         </form>
         </div>
     }
