@@ -49,7 +49,7 @@ development:
   password:
 ```
 
-1. Install backend dependencies: `bundle install`
+7. Install backend dependencies: `bundle install`
 1. Install node: `brew install node`
 1. Install frontend dependencies: `npm install .`
 1. Load the schema: `bin/rake db:schema:load`
