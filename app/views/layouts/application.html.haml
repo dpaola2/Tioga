@@ -11,7 +11,7 @@
     .container
       %header
         = render 'layouts/navigation'
-      %main{:role => "main"}
+      %main{:class => "row", :role => "main"}
         = render 'layouts/messages'
         = yield
     = render "layouts/github"
