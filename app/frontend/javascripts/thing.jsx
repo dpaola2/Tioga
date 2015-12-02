@@ -67,7 +67,11 @@ var Thing = React.createClass({
             }
         } else if (this.state.thing.thing_type == 'event') {
             if (this.state.thing.legit) {
-                return <span className="glyphicon glyphicon-calendar" />
+                if (this.state.thing.complete) {
+                    return <span className="glyphicon glyphicon-check" style={ cursorStyle } onClick={ this.toggleComplete } />
+                } else {
+                    return <span className="glyphicon glyphicon-calendar" style={ cursorStyle } onClick={ this.toggleComplete } />
+                }
             } else {
                 return <span className="glyphicon glyphicon-option-horizontal" />
             }
