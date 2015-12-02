@@ -14,7 +14,7 @@ var NewTopic = React.createClass({
         }.bind(this));
     },
     render: function() {
-        return <div>
+        return <div style={this.props.style}>
         <form className="form-inline">
             <div className="input-group">
                 <input

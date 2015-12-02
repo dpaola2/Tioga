@@ -9,7 +9,7 @@ var TopicSearch = React.createClass({
         this.props.onChange(this.refs.query.value);
     },
     render: function() {
-        return <span>
+        return <span style={this.props.style}>
         <input type="text" ref="query" className="form-control form-inline" placeholder="Search..." onChange={ this.onChange } />
         </span>
     }
