@@ -51,14 +51,26 @@ var Thing = React.createClass({
         };
 
         if (this.state.thing.thing_type == 'todo') {
-            if (this.state.thing.complete)
-                return <span className="glyphicon glyphicon-check" style={ cursorStyle } onClick={ this.toggleComplete } />
-            else
-                return <span className="glyphicon glyphicon-unchecked" style={ cursorStyle } onClick={ this.toggleComplete } />
+            if (this.state.thing.legit) {
+                if (this.state.thing.complete)
+                    return <span className="glyphicon glyphicon-check" style={ cursorStyle } onClick={ this.toggleComplete } />
+                else
+                    return <span className="glyphicon glyphicon-unchecked" style={ cursorStyle } onClick={ this.toggleComplete } />
+            } else {
+                return <span className="glyphicon glyphicon-option-horizontal" />
+            }
         } else if (this.state.thing.thing_type == 'note') {
-            return <span className="glyphicon glyphicon-info-sign" />
+            if (this.state.thing.legit) {
+                return <span className="glyphicon glyphicon-info-sign" />
+            } else {
+                return <span className="glyphicon glyphicon-option-horizontal" />
+            }
         } else if (this.state.thing.thing_type == 'event') {
-            return <span className="glyphicon glyphicon-calendar" />
+            if (this.state.thing.legit) {
+                return <span className="glyphicon glyphicon-calendar" />
+            } else {
+                return <span className="glyphicon glyphicon-option-horizontal" />
+            }
         }
     },
     importantColumn: function() {
@@ -73,14 +85,46 @@ var Thing = React.createClass({
         }
             
     },
+    postponeColumn: function() {
+        var cursorStyle = {
+            cursor: 'pointer'
+        };
+
+        if (this.state.thing.complete) {
+            return <span className="glyphicon glyphicon-option-horizontal" />
+        } else {
+            if (this.state.thing.legit) {
+                return <span className="glyphicon glyphicon-time" onClick={ this.postpone } style={ cursorStyle }/>
+            } else {
+                return <span className="glyphicon glyphicon-option-horizontal" />
+            }
+        }
+    },
+    cancelColumn: function() {
+        var cursorStyle = {
+            cursor: 'pointer'
+        };
+        if (this.state.thing.complete) {
+            return <span className="glyphicon glyphicon-option-horizontal" />
+        } else {
+            if (this.state.thing.legit) {
+                return <span className="glyphicon glyphicon-remove" onClick={ this.toggleLegit } style={ cursorStyle } />
+            } else {
+                return <span className="glyphicon glyphicon-plus" onClick={ this.toggleLegit } style={ cursorStyle } />
+            }
+        }
+    },
     render: function() {
         var style = {};
         if (!this.state.thing.legit) {
             style.textDecoration = 'line-through';
             style.color = 'grey';
+            style.fontStyle = 'italic';
         }
-        if (this.state.thing.complete)
+        if (this.state.thing.complete) {
             style.color = 'grey';
+            style.fontStyle = 'italic';
+        }
         
         var cursorStyle = {
             cursor: 'pointer'
@@ -97,9 +141,9 @@ var Thing = React.createClass({
           &nbsp;
           { this.actionColumn() }
           &nbsp;
-          <span className="glyphicon glyphicon-remove" onClick={ this.toggleLegit } style={ cursorStyle } />
+          { this.cancelColumn() }
           &nbsp;
-          <span className="glyphicon glyphicon-time" onClick={ this.postpone } style={ cursorStyle }/>
+          { this.postponeColumn() }
         </div>
         <div className="col-md-5" style={ style } >
           { this.state.thing.name }
