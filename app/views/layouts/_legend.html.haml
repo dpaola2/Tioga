@@ -1,0 +1,33 @@
+%li.dropdown{role: 'presentation'}
+  %a{class: 'dropdown-toggle', data: {toggle: 'dropdown'}, href: '#', role: 'button', aria: {haspopup: 'true', expanded: 'false'}}
+    How do I use this?
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      %span.glyphicon.glyphicon-star
+      Important
+    %li.divider{role: 'separator'}
+    %li
+      %span.glyphicon.glyphicon-unchecked
+      Todo
+    %li
+      %span.glyphicon.glyphicon-info-sign
+      Note
+    %li
+      %span.glyphicon.glyphicon-calendar
+      Event
+    %li.divider{role: 'separator'}
+    %li
+      %span.glyphicon.glyphicon-check      
+      Mark incomplete
+    %li.divider{role: 'separator'}
+    %li
+      %span.glyphicon.glyphicon-remove
+      Invalidate
+    %li
+      %span.glyphicon.glyphicon-plus
+      Undo invalidate
+    %li.divider{role: 'separator'}  
+    %li
+      %span.glyphicon.glyphicon-time
+      Postpone
