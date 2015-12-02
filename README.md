@@ -31,12 +31,12 @@ Frontend:
 Make sure you have postgres installed, create your database (I call mine tioga_development) and add it to config/database.yml:
 
 
-1. Install rvm: https://rvm.io/
-1. Install ruby: `rvm install 2.1.7`
-1. Install bundler: `gem install bundler`
-1. Install postgres: `brew install postgresql`
-1. Create your database: `createdb tioga_development`
-1. Add credentials to `config/database.yml`:
+- Install rvm: https://rvm.io/
+- Install ruby: `rvm install 2.1.7`
+- Install bundler: `gem install bundler`
+- Install postgres: `brew install postgresql`
+- Create your database: `createdb tioga_development`
+- Add credentials to `config/database.yml`:
 
 ```yaml
 development:
@@ -49,13 +49,13 @@ development:
   password:
 ```
 
-7. Install backend dependencies: `bundle install`
-1. Install node: `brew install node`
-1. Install frontend dependencies: `npm install .`
-1. Load the schema: `bin/rake db:schema:load`
-1. Install foreman: `gem install foreman`
-1. Run the server: `bin/foreman start`
-1. View the running site at http://localhost:5000
+- Install backend dependencies: `bundle install`
+- Install node: `brew install node`
+- Install frontend dependencies: `npm install .`
+- Load the schema: `bin/rake db:schema:load`
+- Install foreman: `gem install foreman`
+- Run the server: `bin/foreman start`
+- View the running site at http://localhost:5000
 
 
 ## Docker dev setup (optional)
