@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.expanding-input {
+  transition: width 100ms ease-in-out;
+}

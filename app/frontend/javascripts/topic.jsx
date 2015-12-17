@@ -26,7 +26,7 @@ var Topic = React.createClass({
         var things = this.state.things.map(function(thing) {
             return <Thing thing={ thing } key={ thing.id } />
         });
-        return <div className="container">
+        return <div className="row container">
         <h2>{ this.props.topic.name }</h2>
         { things }
         <NewThingForm onNewThing={ this.onChange } topicId={ this.props.topic.id } />

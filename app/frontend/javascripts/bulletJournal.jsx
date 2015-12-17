@@ -60,7 +60,7 @@ var BulletJournal = React.createClass({
             ],
             limit: 25
         };
-        
+
         var topics = Data.Topic.filter(filterOpts);
         return topics;
     },
@@ -96,14 +96,8 @@ var BulletJournal = React.createClass({
 
         return <div>
         <div className="row">
-        <div className="col-md-11">
-        <TopicSearch onChange={ this.searchChanged } />
-        </div>
-        </div>
-        <div className="row">
-        <div className="col-md-11">
-        <NewTopic />
-        </div>
+            <TopicSearch onChange={ this.searchChanged } style={{ margin: '10px 0' }} />
+            <NewTopic style={{ margin: '10px 0' }} />
         </div>
         <div className="row">
             { contents }
